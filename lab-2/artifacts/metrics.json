@@ -1,0 +1,172 @@
+{
+  "track": "nlp",
+  "model": "cointegrated/rubert-tiny2",
+  "revision": "e8ed3b0c8bbf4fb6984c3de043bf7d2f4e5969ae",
+  "dataset": "Babelscape/wikineural",
+  "classes": [
+    "LOC",
+    "MISC",
+    "ORG",
+    "PER"
+  ],
+  "n_train": 15000,
+  "n_val": 9232,
+  "n_test": 11580,
+  "params_total": 29098929,
+  "baseline": {
+    "majority": {
+      "f1_micro": 0.521988051775639,
+      "f1_macro": 0.4578496911937254,
+      "precision": 0.6586744843471888,
+      "recall": 0.4322820037105751
+    },
+    "random_head": {
+      "f1_micro": 0.03455906151539371,
+      "f1_macro": 0.030302821329278598,
+      "precision": 0.01911721718795674,
+      "recall": 0.1797567511853226
+    }
+  },
+  "final": {
+    "f1_micro": 0.8101217964298253,
+    "f1_macro": 0.769991011336636,
+    "precision": 0.7922983466272252,
+    "recall": 0.8287656094596088,
+    "token_f1": 0.832338974796055,
+    "per_type": {
+      "LOC": {
+        "precision": 0.8934727648816364,
+        "recall": 0.9044904606793858,
+        "f1-score": 0.8989478552433807,
+        "support": 8596
+      },
+      "MISC": {
+        "precision": 0.6486146095717884,
+        "recall": 0.6954760297096556,
+        "f1-score": 0.671228413163897,
+        "support": 2962
+      },
+      "ORG": {
+        "precision": 0.6373103243082416,
+        "recall": 0.7020648967551623,
+        "f1-score": 0.6681222707423581,
+        "support": 3051
+      },
+      "PER": {
+        "precision": 0.8185265438786565,
+        "recall": 0.8661507595299512,
+        "f1-score": 0.8416655061969084,
+        "support": 3489
+      }
+    }
+  },
+  "ablation": {
+    "setting": "freeze",
+    "full": {
+      "f1_micro": 0.8208352949088709,
+      "f1_macro": 0.7789137197397196,
+      "precision": 0.8037537043134673,
+      "recall": 0.838658695801553,
+      "seconds": 171.30383629199787,
+      "trainable_params": 29098929
+    },
+    "frozen": {
+      "f1_micro": 0.5271346963319302,
+      "f1_macro": 0.3809570523836465,
+      "precision": 0.581750311074243,
+      "recall": 0.4818937676080533,
+      "seconds": 104.25048620799862,
+      "trainable_params": 2817
+    }
+  },
+  "errors": {
+    "correct": 12205,
+    "spurious": 789,
+    "type": 1312,
+    "missed": 380,
+    "boundary": 656
+  },
+  "device": "mps",
+  "train_time_sec": 171.30383629199787,
+  "fast_mode": false,
+  "bonuses": {
+    "6.1": {
+      "n_annotated": 60,
+      "n_train": 45,
+      "n_test": 15,
+      "before": {
+        "f1_micro": 0.46153846153846156,
+        "f1_macro": 0.420142572944297,
+        "precision": 0.47368421052631576,
+        "recall": 0.45
+      },
+      "after": {
+        "f1_micro": 1.0,
+        "f1_macro": 1.0,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "seconds": 10.027698458001396,
+      "file": "artifacts/manual_ner_60.jsonl"
+    },
+    "6.3": {
+      "original": {
+        "f1_micro": 0.8208352949088709,
+        "f1_macro": 0.7789137197397196,
+        "precision": 0.8037537043134673,
+        "recall": 0.838658695801553
+      },
+      "lower": {
+        "f1_micro": 0.19622570650643134,
+        "f1_macro": 0.17696670929654187,
+        "precision": 0.30967550748259004,
+        "recall": 0.1436130007558579
+      },
+      "upper": {
+        "f1_micro": 0.043606557377049174,
+        "f1_macro": 0.04250579943946118,
+        "precision": 0.033076349166873915,
+        "recall": 0.06397306397306397
+      },
+      "typos": {
+        "f1_micro": 0.6386372853859673,
+        "f1_macro": 0.5987321750891614,
+        "precision": 0.6284003990688394,
+        "recall": 0.6492132206417921
+      }
+    },
+    "6.4": {
+      "method": "torch.compile aot_eager",
+      "device": "mps",
+      "eager_ms": 35.211322899886,
+      "compiled_ms": 2.3671833499975037,
+      "same_predictions": true,
+      "max_abs_logit_diff": 0.0,
+      "speedup": 14.874776345450018
+    },
+    "6.5": {
+      "baseline": {
+        "f1_micro": 0.8208352949088709,
+        "f1_macro": 0.7789137197397196,
+        "precision": 0.8037537043134673,
+        "recall": 0.838658695801553
+      },
+      "best_mean": {
+        "aggregate": "mean",
+        "threshold": 0.7,
+        "f1_micro": 0.8318047178901539,
+        "f1_macro": 0.7880419001896374,
+        "precision": 0.8653103653103653,
+        "recall": 0.8007970865113723
+      },
+      "best_min": {
+        "aggregate": "min",
+        "threshold": 0.6499999999999999,
+        "f1_micro": 0.8304999999999999,
+        "f1_macro": 0.7846301030634437,
+        "precision": 0.8646538261322227,
+        "recall": 0.798941798941799
+      }
+    }
+  }
+}
